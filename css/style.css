@@ -1,0 +1,1068 @@
+/* Фон хедера */
+header {
+  background: url('../images/header.jpg') center top / cover no-repeat;
+  height: 100vh; /* десктоп */
+  position: relative;
+  color: white;
+  overflow: hidden;
+}
+
+/* Темная дымка */
+header .overlay {
+  position: absolute;
+  top:0; left:0;
+  width:100%;
+  height:100%;
+  background: rgba(0,0,0,0.35);
+  z-index:1;
+}
+
+/* Контент поверх */
+.header-content {
+  position: relative;
+  z-index:2;
+  height:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Меню glassmorphism */
+.nav-glass {
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 15px;
+  padding: 0.8rem 1.5rem;
+}
+
+/* Навигационные ссылки */
+.nav-link {
+  color: white !important;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+  margin-right: 1rem;
+  transition: color 0.3s;
+}
+.nav-link:hover { color: #ffd700; }
+
+/* Кнопка */
+.btn-book {
+  background-color: #ffd700;
+  color: black;
+  font-weight: 600;
+  border-radius: 50px;
+  padding: 0.45rem 1.2rem;
+  transition: transform 0.3s;
+}
+.btn-book:hover { transform: scale(1.05); }
+
+/* Логотип вертикально для десктопа */
+.logo {
+  font-family: 'Great Vibes', cursive;
+  font-size: 3rem;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  margin-left: 2rem;
+  white-space: nowrap;
+  position: relative;
+}
+
+/* Центральный текст */
+.center-text {
+  margin-left: 4rem;
+}
+
+/* Планшеты и ниже: горизонтальная надпись ниже */
+@media (max-width: 992px) {
+  header { height: 70vh; }
+  .header-content { justify-content: flex-start; }
+
+  .logo {
+    writing-mode: horizontal-tb;
+    font-size: 2.5rem;
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 25%; /* <-- вот сдвигаем ниже */
+    display: block;
+  }
+
+  .center-text {
+    margin-left: 0;
+    text-align: center;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  header { height: 60vh; }
+  .logo {
+    font-size: 2rem;
+    margin-top: 20%; /* ещё чуть ниже на телефоне */
+  }
+
+  .center-text h1 { font-size: 1.5rem; }
+  .center-text p { font-size: 1rem; }
+  .btn-book { padding: 0.35rem 1rem; font-size: 0.9rem; }
+}
+
+
+
+/* --- МОДАЛЬНОЕ ОКНО --- */
+.booking-modal {
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.25);
+}
+
+/* заголовок */
+.booking-modal .modal-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #7A4B2A;
+}
+
+/* левая часть */
+.booking-side {
+  background: url("../images/modal.jpg") center / cover no-repeat;
+  padding: 32px;
+  color: #fff;
+  position: relative;
+}
+
+.booking-side::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+}
+
+.booking-side-text {
+  position: relative;
+  z-index: 2;
+}
+
+.booking-side h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.booking-side p {
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* правая часть */
+.booking-form {
+  padding-left: 28px;
+}
+
+/* поля */
+.booking-modal .form-control {
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  padding: 14px;
+  font-size: 14px;
+}
+
+.booking-modal .form-control:focus {
+  border-color: #7A4B2A;
+  box-shadow: 0 0 0 0.15rem rgba(122, 75, 42, 0.25);
+}
+
+/* кнопка */
+.btn-book {
+  background: #7A4B2A;
+  color: #fff;
+  border: none;
+  font-weight: 700;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.btn-book:hover {
+  background: #6b3f21;
+}
+
+/* --- МОБИЛЬНАЯ ВЕРСИЯ --- */
+@media (max-width: 767px) {
+
+  .modal-dialog {
+    max-width: 92%;
+    margin: 16px auto;
+  }
+
+  .booking-modal {
+    border-radius: 14px;
+  }
+
+  .booking-modal .modal-body {
+    padding: 18px;
+  }
+
+  .booking-modal .modal-title {
+    font-size: 18px;
+  }
+
+  .booking-form {
+    padding-left: 0;
+  }
+
+  .booking-modal .form-control {
+    padding: 12px;
+    font-size: 13px;
+  }
+
+  .btn-book {
+    font-size: 14px;
+  }
+}
+
+
+
+
+
+
+
+.portfolio-header {
+    text-align: left;       /* Заголовок слева */
+    margin-bottom: 25px;    /* Отступ от слайдера */
+}
+
+.portfolio-title {
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;
+    color: #7A4B2A;
+    text-transform: uppercase;
+}
+
+.portfolio-subtitle {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #555;
+    letter-spacing: 2px;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+
+  
+ /* --- СТИЛИ ФОТОК --- */
+.photo-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0px;
+    height: 250px;
+    width: 100%;
+    cursor: pointer;
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 20%;
+}
+
+.photo-card .overlay {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 16px;
+    background: rgba(0, 0, 0, 0.45);
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    text-shadow: 0 1px 10px rgba(0, 0, 0, 0.7);
+}
+
+/* --- DESKTOP SLIDER --- */
+.desktop-slider {
+    display: flex;
+    gap: 5px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+
+    /* ВАЖНО: отступ только слева */
+    padding-left: 20px;   /* здесь можно менять отступ */
+    padding-right: 0;     /* справа отступа нет */
+}
+
+/* чтобы убрать скроллбар */
+.desktop-slider {
+    scrollbar-width: none;
+}
+.desktop-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.desktop-slider .photo-card {
+    width: 320px;
+    height: 280px;
+    scroll-snap-align: start;
+    flex: 0 0 auto;
+}
+
+/* --- Скрытие блоков по размерам экрана --- */
+@media (max-width: 767px) {
+    .desktop-slider {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .mobile-carousel {
+        display: none;
+    }
+}
+
+/* --- МОДАЛКА --- */
+.modal-body img {
+    max-height: 70vh;
+    object-fit: contain;
+}
+
+.scroll-hint {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-top: 0px;
+}
+
+/* текст */
+.scroll-text {
+    font-size: 12px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #555;
+    font-weight: 500;
+}
+
+/* линия на всю ширину */
+.scroll-line {
+    flex: 1;                 /* линия растягивается на всю оставшуюся ширину */
+    height: 1px;
+    background: #7A4B2A;     /* коричневый цвет */
+    opacity: 0.8;
+}
+
+/* --- адаптация --- */
+@media (max-width: 767px) {
+    .scroll-hint {
+        margin-top: 14px;
+    }
+    .scroll-text {
+        font-size: 11px;
+    }
+}
+
+
+
+
+
+
+/* ===== BIO SECTION ===== */
+.bio-section {
+  position: relative;
+  min-height: 100vh;
+  background: url("../images/about.png") center right / cover no-repeat;
+  display: flex;
+  align-items: center;
+  padding: 80px 0;
+}
+
+/* мягкий дым */
+.bio-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at left center,
+      rgba(255,255,255,0.35),
+      rgba(255,255,255,0.15) 45%,
+      rgba(0,0,0,0.25) 100%);
+  z-index: 1;
+}
+
+/* контент */
+.bio-content {
+  position: relative;
+  z-index: 2;
+}
+
+/* стеклянная карточка (очень прозрачная) */
+.bio-card-like {
+  max-width: 620px;
+  padding: 48px 52px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 26px;
+  border: 1px solid rgba(255,255,255,0.18);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+}
+
+/* подпись */
+.bio-logo {
+  font-family: 'Great Vibes', cursive;
+  font-style: italic;
+  font-size: 42px;
+  color: #7A4B2A;
+  margin-bottom: 12px;
+}
+
+/* заголовки */
+.bio-heading {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.bio-title {
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #6b6b6b;
+  margin-bottom: 22px;
+}
+
+/* текст */
+.bio-desc {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #333;
+  margin-bottom: 26px;
+}
+
+/* детали */
+.bio-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px 24px;
+  margin-bottom: 32px;
+}
+
+.bio-item {
+  font-size: 15px;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* кнопка */
+.bio-btn {
+  padding: 12px 30px;
+  border-radius: 999px;
+  background: #7A4B2A;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+}
+
+.bio-btn:hover {
+  background: #6b3f21;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .bio-section {
+    background-position: center;
+    padding: 60px 16px;
+  }
+
+  .bio-card-like {
+    padding: 32px 26px;
+  }
+
+  .bio-logo {
+    font-size: 34px;
+  }
+
+  .bio-heading {
+    font-size: 26px;
+  }
+}
+
+/* ===== MOBILE FIX ===== */
+@media (max-width: 768px) {
+
+  /* затемняем фон секции */
+  .bio-overlay {
+    background:
+      linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.45),
+        rgba(0,0,0,0.55)
+      );
+  }
+
+  .bio-section {
+    min-height: auto;          /* ❗ убираем 100vh */
+    padding: 48px 16px;
+    align-items: flex-start;   /* блок не по центру экрана */
+  }
+
+  /* карточка */
+  .bio-card-like {
+    max-width: 100%;           /* не на весь экран */
+    background: rgba(255, 255, 255, 0.286); /* ❗ почти белая */
+    backdrop-filter: none;     /* убираем блюр (на мобилке плохо читается) */
+    padding: 28px 22px;
+    border-radius: 22px;
+  }
+
+  /* текст — темнее */
+  .bio-heading,
+  .bio-desc,
+  .bio-item {
+    color: #fdfcfc;
+  }
+
+  .bio-title {
+    color: #eae7e7;
+  }
+
+  .bio-logo {
+    font-size: 30px;
+    color: #cd5d0c;
+  }
+
+  .nav-item{
+    margin: 0 !important;
+    margin: auto;
+  }
+}
+
+
+
+
+
+
+
+
+.services-title {
+  font-size: 42px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;
+    color: #7A4B2A;
+    text-transform: uppercase;
+}
+
+.service-card-img {
+  position: relative;
+  height: 320px;
+  overflow: hidden;
+  background: #000;
+}
+
+.g-4, .gy-4 {
+    --bs-gutter-y: 0.5rem;
+}
+
+.g-4, .gx-4 {
+    --bs-gutter-x: 0.5rem;
+}
+
+.service-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 1.2s ease;
+}
+
+.service-card-img:hover img {
+  transform: scale(1.05);
+}
+
+/* нижняя зона */
+.service-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.6),
+    rgba(0,0,0,0)
+  );
+  display: flex;
+  justify-content: center;
+}
+
+.btn-price {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 10px 30px;
+  font-size: 14px;
+  letter-spacing: 2px;
+  transition: 0.4s;
+}
+
+.btn-price:hover {
+  background: #fff;
+  color: #000;
+}
+
+/* mobile */
+@media (max-width: 576px) {
+  .service-card-img {
+    height: 220px;
+  }
+}
+
+
+.luxury-modal {
+  background: #111;
+  color: #fff;
+  border-radius: 0;
+  padding: 60px 40px;
+}
+
+.modal-sub {
+  letter-spacing: 3px;
+  font-size: 12px;
+  opacity: 0.6;
+}
+
+.luxury-modal h3 {
+  font-size: 34px;
+  margin: 15px 0 25px;
+}
+
+.modal-line {
+  width: 60px;
+  height: 1px;
+  background: #fff;
+  margin: 0 auto 30px;
+  opacity: 0.4;
+}
+
+.modal-price {
+  font-size: 26px;
+  margin-bottom: 40px;
+}
+
+.btn-luxury {
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 14px 44px;
+  letter-spacing: 2px;
+  transition: 0.4s;
+}
+
+.btn-luxury:hover {
+  background: #fff;
+  color: #000;
+}
+
+
+
+/* ===== FAQ SECTION ===== */
+.faq-section {
+  background: linear-gradient(120deg, #8a5a35, #6f4324);
+  padding: 40px 0;
+}
+
+/* сетка */
+.faq-layout {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  align-items: stretch;
+}
+
+/* левая часть — фото */
+.faq-photo {
+  position: relative;
+  background: url("../images/photo7.jpg") center / cover no-repeat;
+  min-height: 400px;
+}
+
+/* мягкий градиент поверх фото */
+.faq-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.25),
+    rgba(0, 0, 0, 0.05)
+  );
+}
+
+/* правая часть — контент */
+.faq-content {
+  padding: 56px 56px;
+  color: #fff;
+}
+
+/* маленькая метка */
+.faq-tag {
+  display: inline-block;
+  font-size: 13px;
+  letter-spacing: 3px;
+  opacity: 0.75;
+  margin-bottom: 10px;
+}
+
+/* заголовок */
+.faq-title {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+
+/* список вопросов */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* вопрос */
+.faq-item {
+  background: rgba(255, 255, 255, 0.10);
+  border-radius: 14px;
+  padding: 14px 18px;
+  transition: background 0.3s ease;
+  cursor: pointer;
+
+  /* золотой акцент */
+  border: 1px solid rgba(212, 175, 120, 0.25);
+}
+
+.faq-item:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(212, 175, 120, 0.8);
+  box-shadow: 0 10px 30px rgba(212, 175, 120, 0.25);
+}
+
+.faq-item summary {
+  font-weight: 600;
+  font-size: 15px;
+  list-style: none;
+  transition: color 0.3s ease;
+}
+
+.faq-item:hover summary {
+  color: #d4af78;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item p {
+  margin-top: 10px;
+  font-size: 14.5px;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* ===== SCROLL ANIMATION ===== */
+.fade-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+
+.fade-up.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== ADAPTIVE ===== */
+@media (max-width: 992px) {
+  .faq-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .faq-photo {
+    min-height: 240px;
+  }
+
+  .faq-content {
+    padding: 36px 22px;
+  }
+
+  .faq-title {
+    font-size: 28px;
+  }
+}
+
+@media (max-width: 576px) {
+  .faq-section {
+    padding: 64px 0;
+  }
+
+  .faq-photo {
+    background: url("../images/faq.jpg") center / cover no-repeat;
+  }
+
+  .faq-item {
+    padding: 12px 16px;
+  }
+}
+
+
+
+
+
+
+/* ===== FOOTER ===== */
+/* ===== FOOTER ===== */
+.footer {
+  background: #050505;
+  color: #fff;
+  padding: 50px 0 25px;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("../images/footer-bg.jpg") center / cover no-repeat;
+  opacity: 0.12;
+  filter: blur(1px);
+}
+
+.footer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.06), transparent 60%),
+    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.04), transparent 55%),
+    linear-gradient(120deg, rgba(212,175,120,0.08), transparent 60%);
+  pointer-events: none;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  position: relative;
+  z-index: 2;
+}
+
+.footer-logo {
+  font-family: 'Great Vibes', cursive;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.footer-subtitle {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.footer-links h4,
+.footer-contacts h4,
+.footer-social h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.footer-links a,
+.footer-contacts a {
+  display: block;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  margin-bottom: 10px;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.footer-links a:hover,
+.footer-contacts a:hover {
+  color: #d4af78;
+  transform: translateX(6px);
+}
+
+.social-icons {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.8);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255,255,255,0.12);
+}
+
+.social-link:hover {
+  background: rgba(212,175,120,0.16);
+  color: #d4af78;
+  transform: translateY(-3px);
+  border-color: rgba(212,175,120,0.5);
+}
+
+.footer-line {
+  height: 1px;
+  background: rgba(212, 175, 120, 0.5);
+  margin-bottom: 16px;
+  animation: lineGlow 2.5s infinite;
+}
+
+@keyframes lineGlow {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.75; }
+}
+
+.footer-bottom p {
+  font-size: 13px;
+  opacity: 0.75;
+}
+
+.scroll-top {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 999;
+  display: none;
+  transition: all 0.3s ease;
+}
+
+.scroll-top:hover {
+  background: rgba(212,175,120,0.22);
+  color: #d4af78;
+  transform: translateY(-2px);
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 992px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer {
+    padding: 40px 0 20px;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    text-align: center;
+  }
+
+  .footer-links,
+  .footer-contacts,
+  .footer-social {
+    align-items: center;
+  }
+
+  .footer-links a,
+  .footer-contacts a {
+    margin: 8px 0;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  .footer-social {
+    padding-top: 14px;   /* отступ сверху */
+  }
+
+  .footer-line {
+    margin-bottom: 22px; /* расстояние до соцсетей */
+  }
+
+}
+
+@media (max-width: 400px) {
+  .footer-social {
+    padding-top: 20px;   /* ещё больше отступ */
+  }
+  .footer-line {
+    margin-bottom: 26px; /* ещё больше расстояние */
+  }
+
+  .footer-container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 576px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    text-align: center;
+  }
+
+  .footer-social {
+    padding-top: 18px;        /* отступ сверху */
+    margin-bottom: 16px;      /* отступ снизу */
+  }
+
+  .footer-line {
+    margin: 18px auto 12px;   /* расстояние от контента и к копирайту */
+    width: 90%;
+  }
+
+  .footer-bottom {
+    padding-bottom: 20px;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+  /* кнопка вверх не перекрывает футер */
+  .scroll-top {
+    bottom: 90px;
+  }
+}
+
+/* ===== VERY SMALL SCREENS ===== */
+@media (max-width: 400px) {
+  .footer-social {
+    padding-top: 22px;
+    margin-bottom: 18px;
+  }
+
+  .footer-line {
+    margin: 20px auto 14px;
+  }
+
+  .scroll-top {
+    bottom: 100px;
+  }
+}
