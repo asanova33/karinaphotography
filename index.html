@@ -115,42 +115,7 @@
         </div>
     </div>
 
-    <script>
-        document.getElementById('bookingForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const tg = document.getElementById('tg').value;
-            const date = document.getElementById('date').value;
-
-            const token = '8589845046:AAHRFkSpOLKh98PjmLyy5cyx_FsVKS3cYDk';
-            const chatId = '1046054706';
-
-            const message = `
-            📸 Новая запись на фотосъёмку!
-            👤 Имя: ${name}
-            📞 Телефон: ${phone}
-            💬 Telegram: ${tg}
-            📅 Дата: ${date}
-             `;
-
-            fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ chat_id: chatId, text: message })
-            })
-                .finally(() => {
-                    // Всё делаем тихо, без уведомлений
-                    document.getElementById('bookingForm').reset();
-                    const modal = bootstrap.Modal.getInstance(document.getElementById('bookingModal'));
-                    if (modal) modal.hide();
-                });
-        });
-
-
-    </script>
-
+    
 
 
 
