@@ -116,43 +116,41 @@
     </div>
 
     <script>
-        document.getElementById('bookingForm').addEventListener('submit', function (e) {
-            e.preventDefault();
+       document.getElementById('bookingForm').addEventListener('submit', function (e) {
+    e.preventDefault();
 
-            const name = document.getElementById('name').value;
-            const phone = document.getElementById('phone').value;
-            const tg = document.getElementById('tg').value;
-            const date = document.getElementById('date').value;
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const tg = document.getElementById('tg').value;
+    const date = document.getElementById('date').value;
 
-            // --- ВАЖНО ---
-            const token = '8589845046:AAHRFkSpOLKh98PjmLyy5cyx_FsVKS3cYDk';   // вставь сюда токен бота
-            const chatId = '1046054706';    
+    const token = '8589845046:AAHRFkSpOLKh98PjmLyy5cyx_FsVKS3cYDk';
+    const chatId = '1046054706';
 
-            const message =`
-                Новая запись на фотосъёмку:
-                    Имя: ${ name }
-            Телефон: ${ phone }
-            Telegram: ${ tg }
-            Дата: ${ date }
-            `;
+    const message = `
+Новая запись на фотосъёмку:
+Имя: ${name}
+Телефон: ${phone}
+Telegram: ${tg}
+Дата: ${date}
+`;
 
-            fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    chat_id: chatId,
-                    text: message
-                })
+    fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chat_id: chatId, text: message })
     })
-            .then(res => res.json())
-            .then(res => {
-                alert("Заявка успешно отправлена!");
-                document.getElementById('bookingForm').reset();
-                const modal = bootstrap.Modal.getInstance(document.getElementById('bookingModal'));
-                modal.hide();
-            })
-            .catch(err => alert('Ошибка отправки. Попробуйте позже.'));
+    .then(res => res.json())
+    .then(res => {
+        document.getElementById('bookingForm').reset();
+        const modal = bootstrap.Modal.getInstance(document.getElementById('bookingModal'));
+        modal.hide();
+    })
+    .catch(err => {
+        // ничего не делаем при ошибке
+    });
 });
+
     </script>
 
 
