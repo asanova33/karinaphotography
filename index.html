@@ -58,90 +58,102 @@
 
 
     <!-- MODAL -->
- <!-- MODAL -->
-<!-- MODAL -->
-<div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-lg">
-    <div class="modal-content booking-modal">
+    <!-- MODAL -->
+    <!-- MODAL -->
+    <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content booking-modal">
 
-      <div class="modal-header border-0">
-        <h5 class="modal-title">Запись на съёмку</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-      </div>
+                <div class="modal-header border-0">
+                    <h5 class="modal-title">Запись на съёмку</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
 
-      <div class="modal-body">
-        <div class="row g-0">
+                <div class="modal-body">
+                    <div class="row g-0">
 
-          <div class="col-md-5 d-none d-md-block booking-side">
-            <div class="booking-side-text">
-              <h3>Создадим ваш идеальный кадр</h3>
-              <p>Оставьте контакты и выберите удобную дату</p>
+                        <div class="col-md-5 d-none d-md-block booking-side">
+                            <div class="booking-side-text">
+                                <h3>Создадим ваш идеальный кадр</h3>
+                                <p>Оставьте контакты и выберите удобную дату</p>
+                            </div>
+                        </div>
+
+                        <div class="col-md-7 booking-form">
+                            <form id="bookingForm">
+                                <div class="mb-3">
+                                    <label class="form-label">Имя</label>
+                                    <input id="name" type="text" class="form-control" placeholder="Ваше имя" required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Телефон</label>
+                                    <input id="phone" type="tel" class="form-control" placeholder="+998 (___) ___-__-__"
+                                        required>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Telegram</label>
+                                    <input id="tg" type="text" class="form-control" placeholder="@username">
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Дата</label>
+                                    <input id="date" type="date" class="form-control">
+                                </div>
+
+                                <button type="submit" class="btn btn-book w-100">
+                                    Отправить заявку
+                                </button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
-          </div>
-
-          <div class="col-md-7 booking-form">
-            <form id="bookingForm">
-              <div class="mb-3">
-                <label class="form-label">Имя</label>
-                <input id="name" type="text" class="form-control" placeholder="Ваше имя" required>
-              </div>
-
-              <div class="mb-3">
-                <label class="form-label">Телефон</label>
-                <input id="phone" type="tel" class="form-control" placeholder="+998 (___) ___-__-__" required>
-              </div>
-
-              <div class="mb-3">
-                <label class="form-label">Telegram</label>
-                <input id="tg" type="text" class="form-control" placeholder="@username">
-              </div>
-
-              <div class="mb-3">
-                <label class="form-label">Дата</label>
-                <input id="date" type="date" class="form-control">
-              </div>
-
-              <button type="submit" class="btn btn-book w-100">
-                Отправить заявку
-              </button>
-            </form>
-          </div>
-
         </div>
-      </div>
-
     </div>
-  </div>
-</div>
 
-<script>
-document.getElementById('bookingForm').addEventListener('submit', function(e) {
-  e.preventDefault();
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', function (e) {
+            e.preventDefault();
 
-  const data = {
-    name: document.getElementById('name').value,
-    phone: document.getElementById('phone').value,
-    tg: document.getElementById('tg').value,
-    date: document.getElementById('date').value
-  };
+            const name = document.getElementById('name').value;
+            const phone = document.getElementById('phone').value;
+            const tg = document.getElementById('tg').value;
+            const date = document.getElementById('date').value;
 
-  fetch('https://script.google.com/macros/s/AKfycbxyZVuCP6aujfgv_a54T73ZfYgIoiDQqGx-FwXxl7UQb_K4xJoqZh9GWo_jvwvKWMzH/exec', { 
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data)
-  })
-  .then(res => res.json())
-  .then(res => {
-    alert(res.message); // уведомление пользователю
-    document.getElementById('bookingForm').reset();
-    const modal = bootstrap.Modal.getInstance(document.getElementById('bookingModal'));
-    modal.hide();
-  })
-  .catch(err => alert('Ошибка отправки. Попробуйте позже.'));
+            // --- ВАЖНО ---
+            const token = '8589845046:AAHRFkSpOLKh98PjmLyy5cyx_FsVKS3cYDk';   // вставь сюда токен бота
+            const chatId = '1046054706';    
+
+            const message =`
+                Новая запись на фотосъёмку:
+                    Имя: ${ name }
+            Телефон: ${ phone }
+            Telegram: ${ tg }
+            Дата: ${ date }
+            `;
+
+            fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    chat_id: chatId,
+                    text: message
+                })
+    })
+            .then(res => res.json())
+            .then(res => {
+                alert("Заявка успешно отправлена!");
+                document.getElementById('bookingForm').reset();
+                const modal = bootstrap.Modal.getInstance(document.getElementById('bookingModal'));
+                modal.hide();
+            })
+            .catch(err => alert('Ошибка отправки. Попробуйте позже.'));
 });
-</script>
+    </script>
 
 
 
