@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
+    
 
 </head>
 
@@ -57,8 +57,7 @@
     </header>
 
 
-    <!-- MODAL -->
-    <!-- MODAL -->
+
     <!-- MODAL -->
     <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg">
@@ -116,6 +115,64 @@
     </div>
 
     
+<form id="bookingForm">
+    <div>
+        <label>Имя</label>
+        <input id="name" type="text" required>
+    </div>
+    <div>
+        <label>Телефон</label>
+        <input id="phone" type="tel" required>
+    </div>
+    <div>
+        <label>Telegram</label>
+        <input id="tg" type="text">
+    </div>
+    <div>
+        <label>Дата</label>
+        <input id="date" type="date">
+    </div>
+    <button type="submit">Отправить заявку</button>
+</form>
+
+<script>
+document.getElementById('bookingForm').addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const name = document.getElementById('name').value;
+    const phone = document.getElementById('phone').value;
+    const tg = document.getElementById('tg').value;
+    const date = document.getElementById('date').value;
+
+    // ⚠️ Здесь твой токен бота
+    const token = "8589845046:AAHRFkSpOLKh98PjmLyy5cyx_FsVKS3cYDk";
+    const chatId = "1046054706";
+
+    const message = `
+📸 Новая запись на фотосъёмку:
+👤 Имя: ${name}
+📞 Телефон: ${phone}
+💬 Telegram: ${tg || '—'}
+📅 Дата: ${date || '—'}
+`;
+
+    fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ chat_id: chatId, text: message })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if(data.ok){
+            alert("Заявка отправлена ✅");
+            document.getElementById('bookingForm').reset();
+        } else {
+            alert("Ошибка отправки ❌");
+        }
+    })
+    .catch(() => alert("Ошибка сервера ❌"));
+});
+</script>
 
 
 
